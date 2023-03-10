@@ -10,7 +10,6 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  font-size: 1.6rem;
   font-weight: 500;
   color: #292929;
   background-color: #faebd7;
@@ -25,8 +24,8 @@ body {
 }
 
 .title {
-  margin: 3rem 0 2rem;
-  font-size: 3.5rem;
+  margin: 2.3rem 0 1.2rem;
+  font-size: 3rem;
   font-weight: 700;
 }
 
@@ -35,13 +34,8 @@ body {
   color: #2f32dd;
 }
 
-.accordion:hover {
-  color: #292929;
-}
-
 .accordion__item {
   border-top: 0.1rem solid #949494;
-  cursor: pointer;
 }
 
 [type="radio"] {
@@ -51,47 +45,147 @@ body {
 .accordion__header {
   display: flex;
   justify-content: space-between;
-  padding: 1.8rem 0;
-   transition: all .3s;
+  align-items: center;
+  padding: 1rem 0;
+  transition: all .2s;
 }
 
 .accordion__description {
-  font-size: 2rem;
+  font-size: 1.53rem;
 }
 
 .accordion__icon {
   content: url(../img/icon.svg);
   transform: rotate(45deg);
-  opacity: 0;
+  filter: brightness(0) saturate(100%) invert(26%) sepia(86%) saturate(7288%) hue-rotate(243deg) brightness(87%) contrast(100%);
   transition: all .1s;
 }
 
 .accordion__body {
   height: 0;
   overflow: hidden;
+  transition: height 0.3s ease-out;
 }
 
-[type="radio"]:checked ~ .accordion__body,
-[type="radio"]:hover ~ .accordion__body {
-  height: 100%;
+[type="radio"]:checked ~ .accordion__body {
+  height: 19.8rem;
 }
 
 [type="radio"]:checked ~ .accordion__header {
   color: #292929;
 }
 
-[type="radio"]:hover ~ .accordion__header .accordion__icon {
+[type="radio"]:checked ~ .accordion__header .accordion__icon {
   transform: rotate(0);
-  opacity: 1;
-}
-
-.accordion:hover .accordion__icon {
-  opacity: 1;
+  filter: none;
 }
 
 .accordion__img {
   display: block;
-  margin: 0 auto 1.8rem;
-  max-width: 100%;
+  margin: 0 auto 1.1rem;
+  max-width: 18.7rem;
+  transform: scale(0.9);
+  opacity: 0.5;
+  transition: all 0.3s ease-out;
 }
 
+[type="radio"]:checked ~ .accordion__body .accordion__img {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@media (min-width: 576px) {
+  .title {
+    margin: 2.7rem 0 1.5rem;
+    font-size: 3.2rem;
+  }
+
+  [type="radio"]:checked ~ .accordion__body {
+    height: 21.8rem;
+  }
+
+  .accordion__header {
+    padding: 1.3rem 0;
+  }
+
+  .accordion__description {
+    font-size: 1.7rem;
+  }
+
+  .accordion__img {
+    margin-bottom: 1.8rem;
+    max-width: 20rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .title {
+    margin: 3rem 0 2rem;
+    font-size: 3.5rem;
+  }
+
+  .accordion__header {
+    padding: 1.5rem 0;
+  }
+
+  .accordion__description {
+    font-size: 1.85rem;
+  }
+
+  [type="radio"]:checked ~ .accordion__body {
+    height: 23.8rem;
+  }
+
+  .accordion__img {
+    max-width: 22rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .accordion:hover {
+    color: #292929;
+  }
+
+  .accordion__label:hover {
+    cursor: pointer;
+  }
+  
+  .accordion__header {
+    padding: 1.8rem 0;
+  }
+  
+  .accordion__description {
+    font-size: 2rem;
+  }
+
+  .accordion:hover .accordion__icon {
+    filter: none;
+  }
+
+  .accordion__icon {
+    opacity: 0;
+  }
+  
+  [type="radio"]:hover ~ .accordion__header .accordion__icon {
+    transform: rotate(0);
+    opacity: 1;
+  }
+
+  .accordion:hover .accordion__icon {
+    opacity: 1;
+  }
+
+  [type="radio"]:checked ~ .accordion__body,
+  [type="radio"]:hover ~ .accordion__body {
+    height: 26.8rem;
+  }
+
+  .accordion__img {
+    max-width: 100%;
+  }
+
+  [type="radio"]:hover ~ .accordion__body .accordion__img {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
